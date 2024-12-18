@@ -1,10 +1,13 @@
 package com.demo.pagamento_picpay.domains;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.demo.pagamento_picpay.entities.Movimento;
 import com.demo.pagamento_picpay.entities.User;
 
 import lombok.AllArgsConstructor;
@@ -31,5 +34,7 @@ public class Carteira{
     private BigDecimal saldo;
 
     private User user;
+
+    private Set<Movimento> movimentos = new HashSet<>();
 
 }
