@@ -1,5 +1,6 @@
 package com.demo.pagamento_picpay.entities;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -15,7 +16,8 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString
 
-@Entity(name = "tb_user_lojista")
+@Entity
+@DiscriminatorValue("UserLojista")
 public class UserLojista extends User{
     
     @EqualsAndHashCode.Exclude
