@@ -23,4 +23,11 @@ public class UserLojista extends User{
     @EqualsAndHashCode.Exclude
     private String cnpj;
 
+    public UserLojista(Long id, String cnpj, String name, String email, Carteira carteira) {
+        
+        super(id, name, email, carteira);
+
+        this.cnpj = cnpj;
+    }
+
 }
