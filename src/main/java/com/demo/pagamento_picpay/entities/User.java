@@ -3,6 +3,7 @@ package com.demo.pagamento_picpay.entities;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import com.demo.pagamento_picpay.domains.Carteira;
 
@@ -25,10 +26,11 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
-    private String name;
-    private String email;
+    protected String id;
+    protected String name;
+    protected String email;
 
-    private Carteira carteira;
+    @DBRef
+    protected Carteira carteira;
     
 }

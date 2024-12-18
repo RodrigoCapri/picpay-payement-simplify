@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.demo.pagamento_picpay.entities.Movimento;
@@ -35,6 +36,13 @@ public class Carteira{
 
     private User user;
 
+    @DBRef(lazy = true)
     private Set<Movimento> movimentos = new HashSet<>();
+
+    public Carteira(String id, BigDecimal saldo, User user) {
+        this.id = id;
+        this.saldo = saldo;
+        this.user = user;
+    }
 
 }
