@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.pagamento_picpay.domains.Carteira;
+import com.demo.pagamento_picpay.entities.Carteira;
 import com.demo.pagamento_picpay.repositories.CarteiraRepository;
 import com.demo.pagamento_picpay.services.exceptions.ObjectNotFoundException;
 
@@ -22,15 +22,15 @@ public class CarteiraService {
 
     }
 
-    public Carteira findById(String id) {
+    public Carteira findById(Long id) {
 
-        return carteiraRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException(id) );
+        return carteiraRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("Objeto não encontrado: "+id) );
 
     }
 
     public Carteira insert(Carteira carteira) {
 
-        return carteiraRepository.insert(carteira); 
+        return carteiraRepository.save(carteira);
 
     }
 
@@ -41,10 +41,10 @@ public class CarteiraService {
         carteiraUpdate.setSaldo(carteira.getSaldo());
         carteiraUpdate.setUser(carteira.getUser());
 
-        return carteiraRepository.save(carteiraUpdate);
+        return carteiraRepository.save(carteira);
     }
 
-    public void delete(String id) { 
+    public void delete(Long id) { 
 
         findById(id);
 

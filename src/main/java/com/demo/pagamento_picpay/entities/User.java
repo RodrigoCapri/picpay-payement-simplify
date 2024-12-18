@@ -3,10 +3,11 @@ package com.demo.pagamento_picpay.entities;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import com.demo.pagamento_picpay.domains.Carteira;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,16 +22,19 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "id")
 @ToString
 
+@Entity(name = "tb_user")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    protected String id;
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    protected Long id;
     protected String name;
     protected String email;
 
-    @DBRef
     protected Carteira carteira;
     
 }

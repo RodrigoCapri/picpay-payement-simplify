@@ -1,9 +1,9 @@
 package com.demo.pagamento_picpay.repositories;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.demo.pagamento_picpay.domains.Carteira;
+import com.demo.pagamento_picpay.entities.Carteira;
 
-public interface CarteiraRepository extends MongoRepository<Carteira, String> {
+public interface CarteiraRepository extends JpaRepository<Carteira, Long> {
 
 }

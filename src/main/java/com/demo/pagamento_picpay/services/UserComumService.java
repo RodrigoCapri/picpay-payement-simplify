@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.pagamento_picpay.domains.UserComum;
+import com.demo.pagamento_picpay.entities.UserComum;
 import com.demo.pagamento_picpay.repositories.UserComumRepository;
 import com.demo.pagamento_picpay.services.exceptions.ObjectNotFoundException;
 
@@ -20,14 +20,14 @@ public class UserComumService {
         return userComumRepository.findAll();
     }
 
-    public UserComum findById(String id) {
+    public UserComum findById(Long id) {
 
-        return userComumRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException(id) );
+        return userComumRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("Objeto não encontrado: "+id) );
 
     }
 
     public UserComum insert(UserComum userComum) {
-        return userComumRepository.insert(userComum);
+        return userComumRepository.save(userComum);
     }
 
     public UserComum update(UserComum userComum) {
@@ -42,7 +42,7 @@ public class UserComumService {
         return userComumRepository.save(userComum);
     }
 
-    public void delete(String id) { 
+    public void delete(Long id) { 
 
         findById(id);
 

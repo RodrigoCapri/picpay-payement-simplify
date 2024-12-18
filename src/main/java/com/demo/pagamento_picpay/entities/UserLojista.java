@@ -1,17 +1,12 @@
-package com.demo.pagamento_picpay.domains;
+package com.demo.pagamento_picpay.entities;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.demo.pagamento_picpay.entities.User;
-
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-@Document(collection = "doc_user_comum")
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,9 +15,10 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString
 
-public class UserComum extends User{
-
+@Entity(name = "tb_user_lojista")
+public class UserLojista extends User{
+    
     @EqualsAndHashCode.Exclude
-    private String cpf;
+    private String cnpj;
 
 }

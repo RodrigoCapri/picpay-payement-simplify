@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.pagamento_picpay.domains.UserLojista;
+import com.demo.pagamento_picpay.entities.UserLojista;
 import com.demo.pagamento_picpay.repositories.UserLojistaRepository;
 import com.demo.pagamento_picpay.services.exceptions.ObjectNotFoundException;
 
@@ -20,14 +20,14 @@ public class UserLojistaService {
         return userLojistaRepository.findAll();
     }
 
-    public UserLojista findById(String id) {
+    public UserLojista findById(Long id) {
 
-        return userLojistaRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException(id) );
+        return userLojistaRepository.findById(id).orElseThrow( () -> new ObjectNotFoundException("Objeto não encontrado: "+id) );
 
     }
 
     public UserLojista insert(UserLojista userLojista) {
-        return userLojistaRepository.insert(userLojista);
+        return userLojistaRepository.save(userLojista);
     }
 
     public UserLojista update(UserLojista userLojista) {
@@ -42,7 +42,7 @@ public class UserLojistaService {
         return userLojistaRepository.save(userLojista);
     }
 
-    public void delete(String id) { 
+    public void delete(Long id) { 
 
         findById(id);
 
