@@ -30,4 +30,9 @@ public class UserLojista extends User{
         this.cnpj = cnpj;
     }
 
+    public UserLojista(Long id, String name, String email, String cnpj) {
+        super(id, name, email);
+        this.cnpj = cnpj;
+    }
+
 }

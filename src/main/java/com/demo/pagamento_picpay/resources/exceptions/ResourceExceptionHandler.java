@@ -39,4 +39,12 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(status).body(err); 
     }
 
+    @ExceptionHandler(DeleteAssociationException.class)
+    public ResponseEntity<StandardError> deleteAssociation(DeleteAssociationException e, HttpServletRequest request){
+        String error = "Erro de associação!";
+        HttpStatus status = HttpStatus.CONFLICT; //Conflict 409
+        StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(err); 
+    }
+
 }

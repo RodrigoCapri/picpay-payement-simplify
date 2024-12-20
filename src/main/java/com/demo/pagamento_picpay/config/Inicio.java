@@ -26,12 +26,12 @@ public class Inicio implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        UserComum userComum1 = new UserComum(null, "Ricardo da Silva", "ricardo@gmail.com", null, "00033344455");
-        UserComum userComum2 = new UserComum(null, "Maria de Oliveira", "maria@gmail.com", null, "11177788822");
+        UserComum userComum1 = new UserComum(null, "Ricardo da Silva", "ricardo@gmail.com", "00033344455");
+        UserComum userComum2 = new UserComum(null, "Maria de Oliveira", "maria@gmail.com", "11177788822");
         userComumRepository.saveAll(Arrays.asList(userComum1, userComum2));
 
-        UserLojista userLojista1 = new UserLojista(null, "00011122233345", "Serigo Ramos", "sergio@gmail.com", null);    
-        UserLojista userLojista2 = new UserLojista(null, "77799944433388", "Larissa Pereira", "larissa@gmail.com", null);
+        UserLojista userLojista1 = new UserLojista(null, "00011122233345", "Serigo Ramos", "sergio@gmail.com");    
+        UserLojista userLojista2 = new UserLojista(null, "77799944433388", "Larissa Pereira", "larissa@gmail.com");
         userLojistaRepository.saveAll(Arrays.asList(userLojista1, userLojista2));
 
         Carteira carteira1 = new Carteira(null, BigDecimal.valueOf(1000.00), userComum1);
@@ -45,6 +45,8 @@ public class Inicio implements CommandLineRunner {
 
         userComumRepository.saveAll(Arrays.asList(userComum1, userComum2));
         userLojistaRepository.saveAll(Arrays.asList(userLojista1, userLojista2));
+
+
 
     }
 

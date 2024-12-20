@@ -29,4 +29,9 @@ public class UserComum extends User{
         
     }
 
+    public UserComum(Long id, String name, String email, String cpf) {
+        super(id, name, email);
+        this.cpf = cpf;
+    }
+    
 }
